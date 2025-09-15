@@ -9,7 +9,7 @@ export const setAddresses = (cartId: string, addresses: any) => {
 const emptyCart: Cart = {
     cartItems: [],
     completed: false,
-    id: 0,
+    id: "",
     sessionId: "",
     updatedAt: "",
     createdAt: "",
@@ -56,7 +56,7 @@ export async function createCart(item: {
         data: {
             cartItems: [
                 {
-                    product: item.productId,
+                    product: String(item.productId),
                     quantity: item.quantity,
                     variantId: item.id,
                 },
