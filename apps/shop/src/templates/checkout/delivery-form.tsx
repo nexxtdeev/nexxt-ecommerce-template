@@ -114,7 +114,7 @@ export const DeliveryForm = ({
                         setSelectedMethod(value);
                         const [shippingId, blockIndex] = value.split(":");
                         const shipping = deliveryMethods.find(
-                            (m) => m.id === Number(shippingId)
+                            (m) => String(m.id) === shippingId
                         );
 
                         const block =
