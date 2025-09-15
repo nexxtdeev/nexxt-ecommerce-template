@@ -28,7 +28,9 @@ export default function CollectionTemplate({
                     {collection.description && (
                         <div
                             className="mt-4 text-base text-ui-fg-subtle prose prose-sm max-w-none"
-                            dangerouslySetInnerHTML={{ __html: collection.description }}
+                            dangerouslySetInnerHTML={{
+                                __html: collection.description,
+                            }}
                         />
                     )}
                 </div>
@@ -40,7 +42,7 @@ export default function CollectionTemplate({
                     }
                 >
                     <PaginatedProducts
-                        collectionId={collection.id}
+                        collectionId={Number(collection.id)}
                         page={pageNumber}
                         products={collection.products?.docs as any}
                         sortBy={sort}
