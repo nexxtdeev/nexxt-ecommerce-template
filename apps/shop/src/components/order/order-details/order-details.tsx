@@ -22,7 +22,7 @@ const OrderDetails = ({ order, showStatus }: OrderDetailsProps) => {
                     className="text-ui-fg-medium-plus font-semibold"
                     data-testid="order-email"
                 >
-                    {typeof order.user !== "number" && order.user?.email}
+                    {order.user && typeof order.user === "object" && "email" in order.user && order.user.email}
                 </span>
                 .
             </Text>
