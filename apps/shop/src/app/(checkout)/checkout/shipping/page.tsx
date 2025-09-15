@@ -71,7 +71,7 @@ export default function ShippingPage() {
 
     useEffect(() => {
         const [shippingId, blockIndex] = selectedMethod?.split(":") || [];
-        const method = deliveryMethods.find((m) => m.id === Number(shippingId));
+        const method = deliveryMethods.find((m) => String(m.id) === shippingId);
         const shippingProvider = method?.shippingProvider?.[Number(blockIndex)];
 
         if (shippingProvider) {
@@ -86,7 +86,7 @@ export default function ShippingPage() {
         try {
             const [shippingId, blockIndex] = data.shippingMethod.split(":");
             const shipping = deliveryMethods.find(
-                (m) => m.id === Number(shippingId)
+                (m) => String(m.id) === shippingId
             );
 
             await updateCheckoutSession({
