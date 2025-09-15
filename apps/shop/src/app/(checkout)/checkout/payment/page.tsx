@@ -51,7 +51,7 @@ export default function PaymentPage() {
                     (doc) =>
                         doc.providers?.map((provider: any) => ({
                             id: provider.id,
-                            paymentId: doc.id,
+                            paymentId: Number(provider.paymentId),
                             type: provider.blockType,
                             details: provider.details,
                             instructions: provider.instructions,
@@ -79,7 +79,10 @@ export default function PaymentPage() {
             );
 
             await updateCheckoutSession({
-                payment: selectedMethod?.paymentId,
+                payment:
+                    selectedMethod?.paymentId !== undefined
+                        ? String(selectedMethod.paymentId)
+                        : undefined,
             });
 
             router.push("/checkout/review");
