@@ -1,4 +1,4 @@
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
 
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "node:path";
@@ -69,17 +69,16 @@ export default buildConfig({
     cors: {
         headers: ["x-payload-sdk-token"],
         origins: [
-            process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000",
-            process.env.NEXT_PUBLIC_STOREFRONT_URL || "http://localhost:3020",
-            process.env.NEXT_PUBLIC_EASY_EMAIL_URL || "http://localhost:3040",
-        ],
+            process.env.NEXT_PUBLIC_SERVER_URL,
+            process.env.NEXT_PUBLIC_STOREFRONT_URL,
+            process.env.NEXT_PUBLIC_EASY_EMAIL_URL,
+        ].filter((origin): origin is string => typeof origin === "string"),
     },
     custom: {
-        shopUrl:
-            process.env.NEXT_PUBLIC_STOREFRONT_URL || "http://localhost:3020",
+        shopUrl: process.env.NEXT_PUBLIC_STOREFRONT_URL,
         syncPlugin,
     },
-    db: mongooseAdapter({ url: process.env.DATABASE_URI || '' }),
+    db: mongooseAdapter({ url: process.env.DATABASE_URI || "" }),
     editor: lexicalEditor(),
     endpoints: [
         {
@@ -92,7 +91,7 @@ export default buildConfig({
     ],
     plugins,
     secret: process.env.PAYLOAD_SECRET || "",
-    serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000",
+    serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
     sharp: sharp as any,
     telemetry: false,
     typescript: {
