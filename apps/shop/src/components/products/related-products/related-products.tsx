@@ -19,7 +19,7 @@ export default function RelatedProducts({ product }: RelatedProductsProps) {
 
     const products = [
         {
-            id: 1,
+            id: "1",
             createdAt: "2023-03-01T00:00:00.000Z",
             handle: "product-1",
             thumbnail:
