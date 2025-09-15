@@ -73,7 +73,7 @@ export default function ProductActions({
             await syncCartWithBackend(
                 {
                     id: newItem.id,
-                    product: newItem.productId,
+                    product: Number(newItem.productId),
                     variantId: newItem.id,
                     quantity: 1,
                 },
